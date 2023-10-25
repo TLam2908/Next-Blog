@@ -11,7 +11,7 @@ const MainNavigation = () => {
                 <ul>
                     <li><Link href='/posts'>Posts</Link></li>
                     <li><Link href='/contact'>Contacts</Link></li>
-                    {/* <li><Link href='/messages'>Messages</Link></li> */}
+                    <li><Link href='/messages'>Messages</Link></li>
                 </ul>
             </nav>
         </header>

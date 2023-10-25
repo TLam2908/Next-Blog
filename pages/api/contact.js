@@ -1,4 +1,4 @@
-import { connectDB, getData, insertData } from "../../lib/db-util";
+import { connectDB, getDocuments, insertData } from "../../lib/db-util";
 
 async function handler(req, res) {
     let client;
@@ -8,6 +8,7 @@ async function handler(req, res) {
       res.status(500).json({ message: "Connecting to database failed" });
       return;
     }
+
   if (req.method === "POST") {
     const { email, name, message } = req.body;
 
@@ -37,9 +38,10 @@ async function handler(req, res) {
     }
     res.status(201).json({ message: "Contact sended" });
   }
+
   if (req.method === "GET") {
     try {
-      const allMessages = await getData(client, 'contacts', {
+      const allMessages = await getDocuments(client, 'contacts', {
         _id: -1,
       });
       res.status(200).json({ messages: allMessages, message: 'Success take messages' });
